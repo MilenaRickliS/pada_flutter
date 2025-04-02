@@ -21,7 +21,7 @@ class DetalhesProduto extends StatelessWidget {
             fontSize: 24,
           ),
         ),
-        backgroundColor: Color.fromARGB(255, 122, 9, 104),
+        backgroundColor: Color.fromARGB(255, 183, 154, 58),
         centerTitle: true,
       ),
       body: Padding(
@@ -58,7 +58,7 @@ class DetalhesProduto extends StatelessWidget {
                   Navigator.pop(context);
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Color.fromARGB(255, 72, 30, 66),
+                  backgroundColor: Color.fromARGB(255, 100, 33, 24),
                   padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30),

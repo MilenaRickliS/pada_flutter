@@ -22,7 +22,7 @@ class FavoritosPage extends StatelessWidget {
             fontSize: 32,
           ),
         ),
-        backgroundColor: Color.fromARGB(255, 122, 9, 104),
+        backgroundColor: Color.fromARGB(255, 183, 154, 58),
         centerTitle: true,
       ),
       body: ListView.builder(

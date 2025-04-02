@@ -312,7 +312,7 @@ class _HomeState extends State<Home> {
 
                           },
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Color.fromARGB(255, 72, 41, 30),
+                            backgroundColor: Color.fromARGB(255, 100, 33, 24),
                             padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(30),
