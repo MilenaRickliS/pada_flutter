@@ -129,7 +129,7 @@ class _HomeState extends State<Home> {
         children: <Widget>[
           // Seção do banner ou anúncio
           Expanded(
-            flex: 1, 
+            flex: 1,
             child: Center(
               child: Padding(
                 padding: EdgeInsets.all(16),
@@ -184,14 +184,14 @@ class _HomeState extends State<Home> {
             ),
           ),
 
-          // Grid de opções de categorias
-          Expanded(
-            flex: 1, 
+          // Grid de categorias fixa
+          Container(
+            padding: EdgeInsets.all(16),
             child: GridView.count(
+              shrinkWrap: true, // Faz com que o grid ocupe apenas o espaço necessário
               crossAxisCount: 3,
-              crossAxisSpacing: 16,
-              mainAxisSpacing: 16,
-              childAspectRatio: 0.8,
+              crossAxisSpacing: 2,
+              mainAxisSpacing: 2,
               children: <Widget>[
                 _MenuOption(
                   icon: 'assets/pizza-menu.png',
@@ -217,10 +217,10 @@ class _HomeState extends State<Home> {
               ],
             ),
           ),
-       
+          
           // Grid de produtos
           Expanded(
-            flex: 2, 
+            flex: 2,
             child: GridView.builder(
               padding: EdgeInsets.all(20),
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -248,83 +248,90 @@ class _HomeState extends State<Home> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(16),
                     ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
+                    child: Stack(
                       children: <Widget>[
-                        Container(
-                          width: 100,
-                          height: 100, 
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(16),
-                            image: DecorationImage(
-                              image: AssetImage(produto['imagem']!),
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                        SizedBox(height: 10),
-                        Text(
-                          produto['nome']!,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        SizedBox(height: 5),
-                        Text(
-                          'R\$ ${produto['preco']}',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.green,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                        IconButton(
-                          icon: Icon(
-                            isFavorito ? Icons.favorite : Icons.favorite_border,
-                            color: isFavorito ? Colors.red : Colors.grey,
-                          ),
-                          onPressed: () => _toggleFavorito(produto),
-                        ),
-                        ElevatedButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              PageRouteBuilder(
-                                pageBuilder: (context, animation, secondaryAnimation) {
-                                  return DetalhesProduto(produto: produto);
-                                },
-                                transitionsBuilder: (context, animation, secondaryAnimation, child) {
-                                  
-                                  var fadeAnimation = Tween(begin: 0.0, end: 1.0).animate(
-                                    CurvedAnimation(
-                                      parent: animation,
-                                      curve: Curves.easeInOut,
-                                    ),
-                                  );
-                                  return FadeTransition(opacity: fadeAnimation, child: child);
-                                },
-                                transitionDuration: Duration(seconds: 1), 
+                        Column(
+                          children: <Widget>[
+                            Container(
+                              width: 270,
+                              height: 200,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(16),
+                                image: DecorationImage(
+                                  image: AssetImage(produto['imagem']!),
+                                  fit: BoxFit.cover,
+                                ),
                               ),
-                            );
-
-                          },
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Color.fromARGB(255, 100, 33, 24),
-                            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30),
                             ),
-                          ),
-                          child: Text(
-                            'Ver Produto',
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
+                            SizedBox(height: 10),
+                            Text(
+                              produto['nome']!,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
+                            SizedBox(height: 5),
+                            Text(
+                              'R\$ ${produto['preco']}',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 16,
+                                color: Colors.green,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                            SizedBox(height: 10),
+                            ElevatedButton(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  PageRouteBuilder(
+                                    pageBuilder: (context, animation, secondaryAnimation) {
+                                      return DetalhesProduto(produto: produto);
+                                    },
+                                    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                                      var fadeAnimation = Tween(begin: 0.0, end: 1.0).animate(
+                                        CurvedAnimation(
+                                          parent: animation,
+                                          curve: Curves.easeInOut,
+                                        ),
+                                      );
+                                      return FadeTransition(opacity: fadeAnimation, child: child);
+                                    },
+                                    transitionDuration: Duration(seconds: 1),
+                                  ),
+                                );
+                              },
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Color.fromARGB(255, 100, 33, 24),
+                                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(30),
+                                ),
+                              ),
+                              child: Text(
+                                'Ver Produto',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                            SizedBox(height: 10),
+                          ],
+                        ),
+                        Positioned(
+                          top: 8,
+                          right: 8,
+                          child: IconButton(
+                            icon: Icon(
+                              isFavorito ? Icons.favorite : Icons.favorite_border,
+                              color: isFavorito ? Colors.red : Colors.grey,
+                            ),
+                            onPressed: () => _toggleFavorito(produto),
                           ),
                         ),
                       ],

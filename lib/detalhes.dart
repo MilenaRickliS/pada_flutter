@@ -32,8 +32,8 @@ class DetalhesProduto extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Container(
-                width: 200,
-                height: 300,
+                width: 500,
+                height: 500,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(16),
                   image: DecorationImage(
