@@ -129,7 +129,13 @@ class PizzaState extends State<Pizza> {
               style: ElevatedButton.styleFrom(
                 backgroundColor: Color.fromARGB(255, 141, 81, 59),
               ),
-              child: Text('Finalizar Pizza'),
+              child: Text('Finalizar Pizza',
+                style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+              ),
             ),
           ],
         ),

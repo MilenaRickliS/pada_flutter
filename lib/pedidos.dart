@@ -13,7 +13,12 @@ class PedidosPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Pedidos'),
+        title: Text('Pedidos',
+        style: TextStyle(
+            color: const Color.fromARGB(255, 255, 255, 255),
+            fontWeight: FontWeight.bold,
+            fontSize: 24,
+          ),),
         centerTitle: true,
         backgroundColor: Color.fromARGB(255, 141, 81, 59),
         elevation: 4,
@@ -53,7 +58,14 @@ class PedidosPage extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 backgroundColor: Color.fromARGB(255, 141, 81, 59),
               ),
-              child: Text('Editar Pizza'),
+              child: Text('Editar Pizza', 
+                style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+              ),
+
             ),
           ],
         ),
